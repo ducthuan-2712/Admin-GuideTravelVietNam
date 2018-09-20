@@ -1,0 +1,32 @@
+<% content_for :title, "Show Destination" %>
+<%= render 'layouts/top_form', link: destinations_path, title: "Show Destination" %>
+<p>
+  <strong>Name:</strong><br/>
+  <%= @destination.name %>
+</p>
+
+<p>
+  <strong>Latitude:</strong><br/>
+  <%= @destination.lat %>
+</p>
+
+<p>
+  <strong>Longitude:</strong><br/>
+  <%= @destination.lng %>
+</p>
+
+<p>
+  <strong>Types:</strong><br/>
+  <div>
+    <% @destination.destination_types.all.each do |type| %>
+      <div class="mdc-chip mdc-ripple-upgraded mdc-ripple-upgraded--foreground-activation mr15" tabindex="0" id="mdc-chip-21" style="">
+        <i class="material-icons mdc-chip__icon mdc-chip__icon--leading">directions</i>
+        <div class="mdc-chip__text"><%= type.name %></div>
+      </div>
+    <% end %>
+  </div>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_destination_path(@destination), :class => 'hero-button mdc-button mdc-button--raised mdc-ripple-upgraded mdc-ripple-upgraded--foreground-activation' %>
+</p>

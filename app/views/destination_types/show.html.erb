@@ -1,0 +1,21 @@
+<% content_for :title, "Show Type" %>
+<%= render 'layouts/top_form', link: destination_types_path, title: "Show Type" %>
+<p>
+  <strong>Name:</strong><br/>
+  <%= @type.name %>
+</p>
+
+<p>
+  <strong>Format Name (Alias):</strong><br/>
+  <%= @type.format_name %>
+</p>
+
+
+<p>
+  <strong>Description:</strong><br/>
+  <%= @type.description %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_destination_type_path(@type), :class => 'hero-button mdc-button mdc-button--raised mdc-ripple-upgraded mdc-ripple-upgraded--foreground-activation' %>
+</p>

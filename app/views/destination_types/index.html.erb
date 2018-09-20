@@ -1,0 +1,36 @@
+<% content_for :title, "Types" %>
+<% content_for :show_button_json, true %>
+<%= render 'layouts/add_button', link: new_destination_type_path %>
+<h2 class="mt0">Listing Types</h2>
+<ul class="mdc-list mdc-list-custom mdc-list--two-line mdc-list--avatar-list">
+  <% @types.each do |type| %>
+    <li class="mdc-list-item mdc-ripple-upgraded">
+      <span class="mdc-list-item__graphic" aria-hidden="true"><%= type.id %></span>
+      <div class="mdc-chip mdc-ripple-upgraded mdc-ripple-upgraded--foreground-activation mr15" tabindex="0" id="mdc-chip-21" style="">
+        <i class="material-icons mdc-chip__icon mdc-chip__icon--leading">directions</i>
+        <div class="mdc-chip__text"><%= type.format_name %></div>
+      </div>
+      <span class="mdc-list-item__text">
+        <div>
+          <span class="mdc-list-item__primary-text"><%= type.name %></span>
+          <span class="mdc-list-item__secondary-text"><%= type.description %></span>
+        </div>
+      </span>
+      <span class="mdc-list-item__meta material-icons" aria-hidden="true">
+        <%= link_to 'info', destination_type_path(type), title: "Show", class: "no-decoration" %>
+      </span>
+      <span class="mdc-list-item__meta material-icons" aria-hidden="true">
+        <%= link_to 'edit', edit_destination_type_path(type), title: "Edit", class: "no-decoration" %>
+      </span>
+      <span class="mdc-list-item__meta material-icons" aria-hidden="true">
+        <%= link_to 'delete', destination_type_path(type),
+                              title: "Destroy",
+                              class: "no-decoration",
+                              method: :delete,
+                              data: { confirm: 'Are you sure?' } %>
+      </span>
+    </li>
+    <li class="mdc-list-divider" role="separator"></li>
+  <% end %>
+  </li>
+</ul>

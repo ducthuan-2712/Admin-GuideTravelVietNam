@@ -1,0 +1,37 @@
+<%= form_for @type do |f| %>
+  <% if @type.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@type.errors.count, "error") %> prohibited this type from being saved:
+      </h2>
+      <ul>
+        <% @type.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="mdc-rows">
+  <h3 class="mdc-typography--subtitle1">Name</h3>
+  <div class="text-field-row">
+    <%= f.text_field :name, placeholder: "Delta", class: "mdc-text-field__input" %>
+  </div>
+</div>
+<div class="mdc-rows">
+  <h3 class="mdc-typography--subtitle1">Format Name (Alias)</h3>
+  <div class="text-field-row">
+    <%= f.text_field :format_name, placeholder: "delta", class: "mdc-text-field__input" %>
+  </div>
+</div>
+<div class="mdc-rows">
+  <h3 class="mdc-typography--subtitle1">Description</h3>
+  <div class="text-field-row">
+    <%= f.text_area :description, placeholder: "Example: Ho Chi Minh, Ho Noi, ...", class: "mdc-text-field__input" %>
+  </div>
+</div>
+<p>
+  <%= f.submit @type.new_record? ? "Create" : "Update", :class => 'hero-button mdc-button mdc-button--raised mdc-ripple-upgraded mdc-ripple-upgraded--foreground-activation' %>
+</p>
+
+<% end %>

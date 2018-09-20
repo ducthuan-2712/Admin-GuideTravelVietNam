@@ -1,0 +1,122 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+body {
+  margin: 0;
+  background-color: #f5f6f7;
+}
+.t100 {
+  top: 100%;
+}
+.pad20 {
+  padding: 20px;
+}
+.pad30 {
+  padding: 30px;
+}
+.mt0 {
+  margin-top: 0;
+}
+.reset.m {
+  margin: 0;
+}
+.small-font {
+  font-size: 0.8rem;
+}
+.silver {
+  color: silver;
+}
+.z-index-10 {
+  z-index: 10;
+}
+.mdc-dialog__surface--transition {
+  transition: 200ms ease-in-out 0s;
+}
+.roboto-font {
+  font-family: Roboto,sans-serif;
+}
+.no-decoration {
+  text-decoration: none;
+}
+.mr15 {
+  margin-right: 15px;
+}
+.default-font {
+  font-size: 15px;
+}
+
+/*
+ * Custom
+ */
+
+.custom-drawer {
+  position: fixed;
+  z-index: 3;
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+}
+.custom-layout-grid {
+  padding-left: 256px;
+}
+.add-button {
+  --mdc-ripple-fg-size:33.6px;
+  --mdc-ripple-fg-scale:2.65464;
+  --mdc-ripple-fg-translate-start:11.2px, 14.0125px;
+  --mdc-ripple-fg-translate-end:11.2px, 11.2px;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+}
+.mdc-list--avatar-list .mdc-list-item__graphic {
+  background-color: rgba(0,0,0,.3);
+  color: #fff;
+}
+.mdc-list-custom {
+  border: 1px solid rgba(0,0,0,.1);
+}
+.mdc-list-custom li:last-child {
+  border-bottom: 0 none;
+}
+.mdc-list-custom li .mdc-list-item__text {
+  flex: 1;
+}
+.mdc-list-custom li .mdc-list-item__meta {
+  margin-left: 10px;
+  margin-right: 0;
+}
+.mdc-card__actions {
+  padding: 0;
+}
+.mdc-text-field__input,
+.mdc-select__native-control {
+  /*padding-left: 0;*/
+}
+.mdc-rows-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 -15px;
+}
+.mdc-rows-box {
+  margin: 0 15px;
+  flex: 1;
+}
+.mdc-select.mdc-select--outlined {
+  min-width: 300px;
+  border: 1px solid rgba(0,0,0,.42);
+  border-radius: 4px;
+}

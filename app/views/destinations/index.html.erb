@@ -1,0 +1,41 @@
+<% content_for :title, "Destinations" %>
+<% content_for :show_button_json, true %>
+<%= render 'layouts/add_button', link: new_destination_path %>
+
+<h2 class="mt0">Listing Destinations</h2>
+<ul class="mdc-list mdc-list-custom mdc-list--two-line mdc-list--avatar-list">
+  <% @destinations.each do |destination| %>
+    <li class="mdc-list-item mdc-ripple-upgraded">
+      <span class="mdc-list-item__graphic" aria-hidden="true"><%= destination.id %></span>
+      <div>
+        <% destination.destination_types.all.each do |type| %>
+          <div class="mdc-chip mdc-ripple-upgraded mdc-ripple-upgraded--foreground-activation mr15" tabindex="0" id="mdc-chip-21" style="">
+            <i class="material-icons mdc-chip__icon mdc-chip__icon--leading">directions</i>
+            <div class="mdc-chip__text"><%= type.name %></div>
+          </div>
+        <% end %>
+      </div>
+      <span class="mdc-list-item__text">
+        <div>
+          <span class="mdc-list-item__primary-text"><%= destination.name %></span>
+          <span class="mdc-list-item__secondary-text"><b>Lat:</b> <%= destination.lat %> / <b>Lng:</b> <%= destination.lng %></span>
+        </div>
+      </span>
+      <span class="mdc-list-item__meta material-icons" aria-hidden="true">
+        <%= link_to 'info', destination_path(destination), title: "Show", class: "no-decoration" %>
+      </span>
+      <span class="mdc-list-item__meta material-icons" aria-hidden="true">
+        <%= link_to 'edit', edit_destination_path(destination), title: "Edit", class: "no-decoration" %>
+      </span>
+      <span class="mdc-list-item__meta material-icons" aria-hidden="true">
+        <%= link_to 'delete', destination_path(destination),
+                              title: "Destroy",
+                              class: "no-decoration",
+                              method: :delete,
+                              data: { confirm: 'Are you sure?' } %>
+      </span>
+    </li>
+    <li class="mdc-list-divider" role="separator"></li>
+  <% end %>
+  </li>
+</ul>

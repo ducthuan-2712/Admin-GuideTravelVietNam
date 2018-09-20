@@ -1,0 +1,28 @@
+<h1>Listing Articles</h1>
+<%= link_to 'New article', new_article_path %>
+<ul class="mdc-list mdc-list-custom mdc-list--two-line mdc-list--avatar-list">
+  <% @articles.each do |article| %>
+    <li class="mdc-list-item mdc-ripple-upgraded">
+      <span class="mdc-list-item__graphic" aria-hidden="true"><%= article.id %></span>
+      <span class="mdc-list-item__text">
+        <span class="mdc-list-item__primary-text"><%= article.title %></span>
+        <span class="mdc-list-item__secondary-text"><%= article.text %></span>
+      </span>
+      <span class="mdc-list-item__meta material-icons" aria-hidden="true">
+        <%= link_to 'info', article_path(article), title: "Show", class: "no-decoration" %>
+      </span>
+      <span class="mdc-list-item__meta material-icons" aria-hidden="true">
+        <%= link_to 'edit', edit_article_path(article), title: "Edit", class: "no-decoration" %>
+      </span>
+      <span class="mdc-list-item__meta material-icons" aria-hidden="true">
+        <%= link_to 'delete', article_path(article),
+                              title: "Destroy",
+                              class: "no-decoration",
+                              method: :delete,
+                              data: { confirm: 'Are you sure?' } %>
+      </span>
+    </li>
+    <li class="mdc-list-divider" role="separator"></li>
+  <% end %>
+  </li>
+</ul>

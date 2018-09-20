@@ -1,0 +1,49 @@
+<%= form_for @destination do |f| %>
+
+<div class="mdc-rows">
+  <h3 class="mdc-typography--subtitle1 default-font">Name</h3>
+  <div class="text-field-row">
+    <%= f.text_field :name, placeholder: "Nha Trang", class: "mdc-text-field__input" %>
+  </div>
+</div>
+<div class="mdc-rows">
+  <h3 class="mdc-typography--subtitle1 default-font">Format Name (Alias)</h3>
+  <div class="text-field-row">
+    <%= f.text_field :format_name, placeholder: "nha-trang", class: "mdc-text-field__input" %>
+  </div>
+</div>
+<div class="mdc-rows-form mdc-rows">
+  <div class="mdc-rows-box">
+    <div>
+      <h3 class="mdc-typography--subtitle1 default-font">Latitude</h3>
+      <div class="text-field-row">
+        <%= f.number_field :lat, placeholder: "10.3343909", class: "mdc-text-field__input", step: :any %>
+      </div>
+    </div>
+  </div>
+  <div class="mdc-rows-box">
+    <div>
+      <h3 class="mdc-typography--subtitle1 default-font">Longitude</h3>
+      <div class="text-field-row">
+        <%= f.number_field :lng, placeholder: "10.3343909", class: "mdc-text-field__input", step: :any %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="mdc-rows">
+  <h3 class="mdc-typography--subtitle1 default-font">Choose Types</h3>
+  <div class="mdc-select mdc-select--outlined">
+    <%= select_tag 'destination_type_id',
+                    options_for_select(@destination_types.map{ |u| [
+                      u.name,
+                      u.format_name,
+                      include_blank: true
+                    ]}, @destination.id), :class => 'mdc-select__native-control' %>
+  </div>
+</div>
+
+<p>
+  <%= f.submit @destination.new_record? ? "Create" : "Update", :class => 'hero-button mdc-button mdc-button--raised mdc-ripple-upgraded mdc-ripple-upgraded--foreground-activation' %>
+</p>
+
+<% end %>

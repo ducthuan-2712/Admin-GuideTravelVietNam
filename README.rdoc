@@ -1,0 +1,73 @@
+== README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
+
+
+Please feel free to use a different markup language if you do not plan to run
+<tt>rake doc:app</tt>.
+
+
+// init Controller
+bin/rails generate controller articles
+
+// destroy Controller
+bin/rails destroy controller articles
+
+// Rake routes
+bin/rake routes
+
+// Rake routes specifile path
+rake routes | grep ***resource*** => ***resource***: Path config routes
+Example: rake routes | grep types
+
+// Rake db Development
+bin/rake db:migrate RAILS_ENV=development
+
+// Rake db Production
+bin/rake db:migrate RAILS_ENV=production
+
+// Create init model
+bin/rails generate model Type [params]
+Example: bin/rails generate model Photos name:string description:text destination:references
+
+// destroy model
+bin/rails destroy model
+
+// Reset db
+rake db:reset db:migrate
+or last options
+rake db:drop db:create db:migrate
+
+// Rake db schema dump
+rake db:schema:dump
+
+// Update migrate so don't need reset db
+rails g migration **conversion_name_columns** **params**
+Example: rails g migration add_locations_to_destinations locations:json
+
+Example Youtube
++ Has_many through: https://www.youtube.com/watch?v=Cj1FhPy9sz4
+
+Example Rails (list video)
++ https://www.mackenziechild.me/

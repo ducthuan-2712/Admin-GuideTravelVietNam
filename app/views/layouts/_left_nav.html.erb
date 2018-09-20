@@ -1,0 +1,49 @@
+<aside class="mdc-drawer mdc-drawer--dismissible mdc-drawer--open custom-drawer">
+  <div class="mdc-top-app-bar--fixed-adjust">
+    <div class="mdc-drawer__header">
+      <h3 class="mdc-drawer__title">Role <span class="small-font silver">(Admin)</span></h3>
+      <h6 class="mdc-drawer__subtitle">thuanhuynhduc2712@gmail.com</h6>
+    </div>
+    <div class="mdc-drawer__content">
+      <nav class="mdc-list">
+        <a class="mdc-list-item <%= current_class?(root_path) %>" href="<%= root_path %>" tabindex="0" aria-selected="true">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">dashboard</i>
+          Home
+        </a>
+        <a class="mdc-list-item <%= current_class?(destination_types_path) %>" href="<%= destination_types_path %>" tabindex="0" aria-selected="true">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">inbox</i>
+          Types
+        </a>
+        <a class="mdc-list-item <%= current_class?(destinations_path) %>" href="<%= destinations_path %>" tabindex="-1">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">star</i>
+          Destinations
+        </a>
+        <a class="mdc-list-item <%= current_class?(places_path) %>" href="<%= places_path %>" tabindex="-1">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">place</i>
+          Places
+        </a>
+        <a class="mdc-list-item <%= current_class?(photos_path) %>" href="<%= photos_path %>" tabindex="-1">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">photo_library</i>
+          Photos
+        </a>
+        <hr class="mdc-list-divider">
+        <h6 class="mdc-list-group__subheader">
+          Tools
+        </h6>
+        <a class="mdc-list-item <%= current_class?(recommendeds_path) %>" href="<%= recommendeds_path %>" tabindex="-1">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
+          Recommend Guide
+        </a>
+        <hr class="mdc-list-divider">
+        <a class="mdc-list-item <%= current_class?(settings_path) %>" href="<%= settings_path %>" tabindex="-1">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">settings</i>
+          Settings
+        </a>
+        <a class="mdc-list-item mdc-list-item-open-diablog" href="javascript:void(0)" tabindex="-1">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">announcement</i>
+          Help &amp; feedback
+        </a>
+      </nav>
+    </div>
+  </div>
+</aside>

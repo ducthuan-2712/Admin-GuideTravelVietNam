@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= yield(:title) %> | Guide Travel Viet Nam</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="theme-color" content="#000000">
+  <link href="<%= asset_path('favicon.ico') %>" rel="shortcut icon" type="image/png" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" />
+  <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" type="text/css" rel="stylesheet" />
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+</head>
+<body class="mdc-typography">
+
+<%#= render 'layouts/loading' %>
+<%= render 'layouts/top_nav' %>
+<div class="mdc-top-app-bar--fixed-adjust">
+  <%= render 'layouts/left_nav' %>
+  <div class="custom-layout-grid">
+    <div class="mdc-layout-grid">
+      <div class="mdc-layout-grid__inner">
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+          <div class="mdc-card pad30 roboto-font">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render 'layouts/helps' %>
+
+</body>
+</html>
