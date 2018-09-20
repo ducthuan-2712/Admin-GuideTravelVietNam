@@ -30,6 +30,9 @@ body {
 .mt0 {
   margin-top: 0;
 }
+.mb15 {
+  margin-bottom: 15px;
+}
 .reset.m {
   margin: 0;
 }
@@ -119,4 +122,15 @@ body {
   min-width: 300px;
   border: 1px solid rgba(0,0,0,.42);
   border-radius: 4px;
+}
+.mdc-select__native-control-multiple,
+.mdc-select__native-control-multiple select.mdc-select__native-control {
+  height: 110px;
+}
+.mdc-select__native-control-multiple {
+  background: transparent;
+}
+.mdc-select__native-control-multiple select.mdc-select__native-control {
+  overflow-y: auto;
+  padding-right: 16px;
 }

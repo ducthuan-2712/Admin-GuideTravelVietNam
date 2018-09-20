@@ -19,11 +19,12 @@ class DestinationsController < ApplicationController
 
   def edit
     @destination = Destination.find(params[:id])
-    @destination_types = @destination.destination_types
+    @destination_types = DestinationType.all
   end
 
   def create
     @destination = Destination.new(type_params)
+    @destination.destination_types << DestinationType.find(params[:destination_type_id])
 
     if @destination.save
       redirect_to @destination
@@ -34,6 +35,8 @@ class DestinationsController < ApplicationController
 
   def update
     @destination = Destination.find(params[:id])
+    @destination.destination_types = []
+    @destination.destination_types << DestinationType.find(params[:destination_type_id])
 
     if @destination.update(type_params)
       redirect_to @destination
@@ -53,7 +56,6 @@ class DestinationsController < ApplicationController
     def type_params
       params.require(:destination).permit(
         :name, :format_name, :lat, :lng,
-        destination_types: [:name, :format_name, :description],
       )
     end
 end

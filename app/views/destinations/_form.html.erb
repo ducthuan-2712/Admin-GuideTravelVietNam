@@ -32,13 +32,21 @@
 </div>
 <div class="mdc-rows">
   <h3 class="mdc-typography--subtitle1 default-font">Choose Types</h3>
-  <div class="mdc-select mdc-select--outlined">
+  <div class="mb15">
+    <% @destination.destination_types.all.each do |type| %>
+      <div class="mdc-chip mdc-ripple-upgraded mdc-ripple-upgraded--foreground-activation mr15" tabindex="0" id="mdc-chip-21" style="">
+        <i class="material-icons mdc-chip__icon mdc-chip__icon--leading">directions</i>
+        <div class="mdc-chip__text"><%= type.name %></div>
+      </div>
+    <% end %>
+  </div>
+  <div class="mdc-select mdc-select--outlined mdc-select__native-control-multiple">
     <%= select_tag 'destination_type_id',
                     options_for_select(@destination_types.map{ |u| [
                       u.name,
-                      u.format_name,
+                      u.id,
                       include_blank: true
-                    ]}, @destination.id), :class => 'mdc-select__native-control' %>
+                    ]}), :multiple => true, :class => 'mdc-select__native-control' %>
   </div>
 </div>
 
