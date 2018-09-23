@@ -18,23 +18,89 @@ body {
   margin: 0;
   background-color: #f5f6f7;
 }
+
+/*
+ * PADDING COMMON
+ */
+
+.reset.p { padding: 0 }
+.pad5 { padding: 5px }
+.pad10 { padding: 10px }
+.pad15 { padding: 15px }
+.pad20 { padding: 20px }
+.pad30 { padding: 30px }
+
+.pl0 { padding-left: 0 }
+.pl5 { padding-left: 5px }
+.pl10 { padding-left: 10px }
+.pl15 { padding-left: 15px }
+.pl20 { padding-left: 20px }
+.pl30 { padding-left: 30px }
+
+.pb0 { padding-bottom: 0 }
+.pb5 { padding-bottom: 5px }
+.pb10 { padding-bottom: 10px }
+.pb15 { padding-bottom: 15px }
+.pb20 { padding-bottom: 20px }
+.pb30 { padding-bottom: 30px }
+
+.pt0 { padding-top: 0 }
+.pt5 { padding-top: 5px }
+.pt10 { padding-top: 10px }
+.pt15 { padding-top: 15px }
+.pt20 { padding-top: 20px }
+.pt30 { padding-top: 30px }
+
+.pr0 { padding-right: 0 }
+.pr5 { padding-right: 5px }
+.pr10 { padding-right: 10px }
+.pr15 { padding-right: 15px }
+.pr20 { padding-right: 20px }
+.pr30 { padding-right: 30px }
+
+
+/*
+ * MARGIN COMMON
+ */
+
+.reset.m { margin: 0 }
+.mar5 { margin: 5px }
+.mar10 { margin: 10px }
+.mar15 { margin: 15px }
+.mar20 { margin: 20px }
+.mar30 { margin: 30px }
+
+.ml0 { margin-left: 0 }
+.ml5 { margin-left: 5px }
+.ml10 { margin-left: 10px }
+.ml15 { margin-left: 15px }
+.ml20 { margin-left: 20px }
+.ml30 { margin-left: 30px }
+
+.mb0 { margin-bottom: 0 }
+.mb5 { margin-bottom: 5px }
+.mb10 { margin-bottom: 10px }
+.mb15 { margin-bottom: 15px }
+.mb20 { margin-bottom: 20px }
+.mb30 { margin-bottom: 30px }
+
+.mt0 { margin-top: 0 }
+.mt5 { margin-top: 5px }
+.mt10 { margin-top: 10px }
+.mt15 { margin-top: 15px }
+.mt20 { margin-top: 20px }
+.mt30 { margin-top: 30px }
+
+.mr0 { margin-right: 0 }
+.mr5 { margin-right: 5px }
+.mr10 { margin-right: 10px }
+.mr15 { margin-right: 15px }
+.mr20 { margin-right: 20px }
+.mr30 { margin-right: 30px }
+
+
 .t100 {
   top: 100%;
-}
-.pad20 {
-  padding: 20px;
-}
-.pad30 {
-  padding: 30px;
-}
-.mt0 {
-  margin-top: 0;
-}
-.mb15 {
-  margin-bottom: 15px;
-}
-.reset.m {
-  margin: 0;
 }
 .small-font {
   font-size: 0.8rem;
@@ -54,11 +120,27 @@ body {
 .no-decoration {
   text-decoration: none;
 }
-.mr15 {
-  margin-right: 15px;
-}
 .default-font {
   font-size: 15px;
+}
+.default-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.default-box {
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+.flex {
+  display: flex;
+}
+.flex-index {
+  flex: 1;
+}
+.flex-align-center {
+  align-items: center;
 }
 
 /*
@@ -108,11 +190,16 @@ body {
 .mdc-select__native-control {
   /*padding-left: 0;*/
 }
+.mdc-text-field__input[disabled] {
+  background-color: #f5f6f7;
+  border: 1px solid #dcdcdc;
+}
 .mdc-rows-form {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 -15px;
+  margin-left: -15px;
+  margin-right: -15px;
 }
 .mdc-rows-box {
   margin: 0 15px;

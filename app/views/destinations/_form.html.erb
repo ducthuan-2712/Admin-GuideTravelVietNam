@@ -1,21 +1,21 @@
-<%= form_for @destination do |f| %>
+<%= form_for @destination, html: { id: "submit-destination-form" } do |f| %>
 
-<div class="mdc-rows">
-  <h3 class="mdc-typography--subtitle1 default-font">Name</h3>
+<div class="mdc-rows mb30">
+  <h3 class="mdc-typography--subtitle1 default-font mb0">Name</h3>
   <div class="text-field-row">
     <%= f.text_field :name, placeholder: "Nha Trang", class: "mdc-text-field__input" %>
   </div>
 </div>
-<div class="mdc-rows">
-  <h3 class="mdc-typography--subtitle1 default-font">Format Name (Alias)</h3>
+<div class="mdc-rows mb30">
+  <h3 class="mdc-typography--subtitle1 default-font mb0">Format Name (Alias)</h3>
   <div class="text-field-row">
-    <%= f.text_field :format_name, placeholder: "nha-trang", class: "mdc-text-field__input" %>
+    <%= f.text_field :format_name, placeholder: "nha-trang", readOnly: true, class: "mdc-text-field__input" %>
   </div>
 </div>
-<div class="mdc-rows-form mdc-rows">
+<div class="mdc-rows-form mdc-rows mb30">
   <div class="mdc-rows-box">
     <div>
-      <h3 class="mdc-typography--subtitle1 default-font">Latitude</h3>
+      <h3 class="mdc-typography--subtitle1 default-font mb0">Latitude</h3>
       <div class="text-field-row">
         <%= f.number_field :lat, placeholder: "10.3343909", class: "mdc-text-field__input", step: :any %>
       </div>
@@ -23,35 +23,50 @@
   </div>
   <div class="mdc-rows-box">
     <div>
-      <h3 class="mdc-typography--subtitle1 default-font">Longitude</h3>
+      <h3 class="mdc-typography--subtitle1 default-font mb0">Longitude</h3>
       <div class="text-field-row">
         <%= f.number_field :lng, placeholder: "10.3343909", class: "mdc-text-field__input", step: :any %>
       </div>
     </div>
   </div>
 </div>
-<div class="mdc-rows">
+<div class="mdc-rows mb30">
   <h3 class="mdc-typography--subtitle1 default-font">Choose Types</h3>
-  <div class="mb15">
-    <% @destination.destination_types.all.each do |type| %>
-      <div class="mdc-chip mdc-ripple-upgraded mdc-ripple-upgraded--foreground-activation mr15" tabindex="0" id="mdc-chip-21" style="">
-        <i class="material-icons mdc-chip__icon mdc-chip__icon--leading">directions</i>
-        <div class="mdc-chip__text"><%= type.name %></div>
+  <div class="flex">
+    <div class="mr30 default-box pl5 pr20">
+      <ul class="default-list">
+        <%= f.collection_check_boxes :destination_type_id, @destination_types.all, :id, :name, include_hidden: false, checked: @destination.destination_types.all.map(&:id) do |div| %>
+          <li class="flex flex-align-center">
+            <div class="mdc-checkbox mdc-checkbox--upgraded mdc-ripple-upgraded mdc-ripple-upgraded--unbounded mdc-ripple-upgraded--foreground-activationn">
+              <%= div.check_box(class: 'mdc-checkbox__native-control') %>
+              <div class="mdc-checkbox__background">
+                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                  <path class="mdc-checkbox__checkmark-path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+                </svg>
+                <div class="mdc-checkbox__mixedmark"></div>
+              </div>
+            </div>
+            <%= div.label(class: 'default-font') %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="mb15 flex-index">
+      <b class="mdc-typography--subtitle default-font mb0">Preview</b>
+      <div class="mt15">
+        <% @destination.destination_types.all.each do |type| %>
+          <div class="mdc-chip mdc-ripple-upgraded mdc-ripple-upgraded--foreground-activation mr15" tabindex="0" id="mdc-chip-21" style="">
+            <i class="material-icons mdc-chip__icon mdc-chip__icon--leading">directions</i>
+            <div class="mdc-chip__text"><%= type.name %></div>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-  </div>
-  <div class="mdc-select mdc-select--outlined mdc-select__native-control-multiple">
-    <%= select_tag 'destination_type_id',
-                    options_for_select(@destination_types.map{ |u| [
-                      u.name,
-                      u.id,
-                      include_blank: true
-                    ]}), :multiple => true, :class => 'mdc-select__native-control' %>
+    </div>
   </div>
 </div>
 
 <p>
-  <%= f.submit @destination.new_record? ? "Create" : "Update", :class => 'hero-button mdc-button mdc-button--raised mdc-ripple-upgraded mdc-ripple-upgraded--foreground-activation' %>
+  <%= f.submit @destination.new_record? ? "Create" : "Update", :class => 'hero-button mdc-button mdc-button--raised mdc-ripple-upgraded mdc-ripple-upgraded--foreground-activation', :id => 'submit-destination' %>
 </p>
 
 <% end %>

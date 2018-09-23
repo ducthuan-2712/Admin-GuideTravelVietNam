@@ -41,8 +41,20 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-
-  # Log error get better
-  gem "better_errors"
 end
 
+group :development do
+  gem 'pry-rails'
+  gem 'better_errors'
+  gem 'meta_request'
+  gem 'table_print' # console table print
+  gem 'bullet' # check N+1 query
+end
+
+# js module
+# gem 'react-rails', '~> 1.4.2'
+# gem 'requirejs-rails'
+# gem 'react_on_rails', '9.0.2', github: 'deliveree/react_on_rails'
+
+# zip
+# gem 'webpacker'

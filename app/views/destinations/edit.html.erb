@@ -1,3 +1,3 @@
 <% content_for :title, "Edit Destination" %>
-<%= render 'layouts/top_form', link: destinations_path, title: "Edit Destination" %>
+<%= render 'layouts/top_form', link: destinations_path, title: "Edit Destination: #{@destination.name}" %>
 <%= render 'form' %>

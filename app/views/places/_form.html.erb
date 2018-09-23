@@ -1,0 +1,34 @@
+<%= form_for @place, html: { id: "submit-place-form", multipart: true } do |f| %>
+  <div class="mdc-rows mb30">
+    <h3 class="mdc-typography--subtitle1 default-font mb0">Name</h3>
+    <div class="text-field-row">
+      <%= f.text_field :name, placeholder: "Nha Trang", class: "mdc-text-field__input" %>
+    </div>
+  </div>
+  <div class="mdc-rows mb30">
+    <h3 class="mdc-typography--subtitle1 default-font mb0">Format Name (Alias)</h3>
+    <div class="text-field-row">
+      <%= f.text_field :format_name, placeholder: "nha-trang", readOnly: true, class: "mdc-text-field__input" %>
+    </div>
+  </div>
+  <div class="mdc-rows-form mdc-rows mb30">
+    <div class="mdc-rows-box">
+      <div>
+        <h3 class="mdc-typography--subtitle1 default-font mb0">Latitude</h3>
+        <div class="text-field-row">
+          <%= f.number_field :lat, placeholder: "10.3343909", class: "mdc-text-field__input", step: :any %>
+        </div>
+      </div>
+    </div>
+    <div class="mdc-rows-box">
+      <div>
+        <h3 class="mdc-typography--subtitle1 default-font mb0">Longitude</h3>
+        <div class="text-field-row">
+          <%= f.number_field :lng, placeholder: "10.3343909", class: "mdc-text-field__input", step: :any %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+/ = react_component('UploadImage', inputName: 'area[driver_image_attributes][image]', image: "#{f.object.driver_image.try :image, :thumb}")

@@ -1,4 +1,4 @@
-<%= form_for @type do |f| %>
+<%= form_for @type, html: { id: "submit-destination-type-form" }  do |f| %>
   <% if @type.errors.any? %>
     <div id="error_explanation">
       <h2>
@@ -12,20 +12,20 @@
     </div>
   <% end %>
 
-<div class="mdc-rows">
-  <h3 class="mdc-typography--subtitle1">Name</h3>
+<div class="mdc-rows mb30">
+  <h3 class="mdc-typography--subtitle1 default-font mb0">Name</h3>
   <div class="text-field-row">
-    <%= f.text_field :name, placeholder: "Delta", class: "mdc-text-field__input" %>
+    <%= f.text_field :name, placeholder: "Nha Trang", class: "mdc-text-field__input" %>
   </div>
 </div>
-<div class="mdc-rows">
-  <h3 class="mdc-typography--subtitle1">Format Name (Alias)</h3>
+<div class="mdc-rows mb30">
+  <h3 class="mdc-typography--subtitle1 default-font mb0">Format Name (Alias)</h3>
   <div class="text-field-row">
-    <%= f.text_field :format_name, placeholder: "delta", class: "mdc-text-field__input" %>
+    <%= f.text_field :format_name, placeholder: "nha-trang", readOnly: true, class: "mdc-text-field__input" %>
   </div>
 </div>
-<div class="mdc-rows">
-  <h3 class="mdc-typography--subtitle1">Description</h3>
+<div class="mdc-rows mb30">
+  <h3 class="mdc-typography--subtitle1 default-font mb0">Description</h3>
   <div class="text-field-row">
     <%= f.text_area :description, placeholder: "Example: Ho Chi Minh, Ho Noi, ...", class: "mdc-text-field__input" %>
   </div>
