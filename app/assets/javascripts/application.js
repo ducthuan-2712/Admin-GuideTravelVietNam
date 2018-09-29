@@ -35,12 +35,12 @@ function remove_unicode(str)
    return str;
 }
 
-
 $(document).ready(function() {
   $(document).on('click', '.mdc-list-item-open-diablog', function() {
     $('#mdc-dialog-with-list').toggleClass('mdc-dialog--open');
     $('body').addClass('mdc-dialog-scroll-lock');
-  });
+  })
+
   $(document).on('click', '#close-modal', function() {
     $(this).closest('.mdc-dialog').toggleClass('mdc-dialog--open');
     $('body').removeClass('mdc-dialog-scroll-lock');
@@ -48,7 +48,7 @@ $(document).ready(function() {
 
   $(document).on('submit', '#submit-destination-form', function(e) {
     e.preventDefault();
-    var name = $("#destination_name").val()
+    var name = $("#destination_name").val();
     $("#destination_format_name").val(remove_unicode(name.split(' ').join('-').toLowerCase()));
     $("#submit-destination-form").trigger('submit.rails');
   })
@@ -59,7 +59,7 @@ $(document).ready(function() {
 
   $(document).on('submit', '#submit-destination-type-form', function(e) {
     e.preventDefault();
-    var name = $("#destination_type_name").val()
+    var name = $("#destination_type_name").val();
     $("#destination_type_format_name").val(remove_unicode(name.split(' ').join('-').toLowerCase()));
     $("#submit-destination-form").trigger('submit.rails');
   })
@@ -70,7 +70,7 @@ $(document).ready(function() {
 
   $(document).on('submit', '#submit-place-form', function(e) {
     e.preventDefault();
-    var name = $("#place_name").val()
+    var name = $("#place_name").val();
     $("#place_format_name").val(remove_unicode(name.split(' ').join('-').toLowerCase()));
     $("#submit-place-form").trigger('submit.rails');
   })
@@ -78,4 +78,16 @@ $(document).ready(function() {
     var name = $(this).val();
     $("#place_format_name").val(remove_unicode(name.split(' ').join('-').toLowerCase()));
   })
+
+  // Block Material JS
+  window.mdc.autoInit();
+  var tabBar = new mdc.tabBar.MDCTabBar(document.querySelector('.mdc-tab-bar'));
+  var contentEls = document.querySelectorAll('.content');
+  tabBar.listen('MDCTabBar:activated', function(event) {
+    // Hide currently-active content
+    document.querySelector('.content--active').classList.remove('content--active');
+    // Show content for newly-activated tab
+    contentEls[event.detail.index].classList.add('content--active');
+  });
+  // End Block Material JS
 })

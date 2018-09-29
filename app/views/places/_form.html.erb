@@ -1,34 +1,243 @@
 <%= form_for @place, html: { id: "submit-place-form", multipart: true } do |f| %>
-  <div class="mdc-rows mb30">
-    <h3 class="mdc-typography--subtitle1 default-font mb0">Name</h3>
-    <div class="text-field-row">
-      <%= f.text_field :name, placeholder: "Nha Trang", class: "mdc-text-field__input" %>
-    </div>
-  </div>
-  <div class="mdc-rows mb30">
-    <h3 class="mdc-typography--subtitle1 default-font mb0">Format Name (Alias)</h3>
-    <div class="text-field-row">
-      <%= f.text_field :format_name, placeholder: "nha-trang", readOnly: true, class: "mdc-text-field__input" %>
+  <div class="mdc-rows-form mdc-rows mt15">
+    <div class="mdc-rows-box flex flex-wrap">
+      <div class="mdc-rows mr20 mb20">
+        <h3 class="mdc-typography--subtitle1 default-font mb5 mt0 mr15">Destination</h3>
+        <div class="mdc-select mdc-select--outlined w200">
+          <%= select_tag 'destination_id',
+                        options_for_select(@destinations.map{ |u| [
+                          u.name,
+                          u.id,
+                          include_blank: true
+                        ]}, @place.destination_id), :class => 'mdc-select__native-control' %>
+          <div class="mdc-notched-outline">
+            <svg>
+              <path class="mdc-notched-outline__path"/>
+            </svg>
+          </div>
+          <div class="mdc-notched-outline__idle"></div>
+        </div>
+      </div>
+      <div class="mdc-rows mr20 mb20">
+        <h3 class="mdc-typography--subtitle1 default-font mb5 mt0 mr15">&nbsp;</h3>
+        <div class="mdc-text-field text-field mdc-text-field--outlined w200 white-bg" data-mdc-auto-init="MDCTextField">
+          <input id="get-place-google" class="mdc-text-field__input" />
+          <label class="mdc-floating-label">Enter Place ID</label>
+          <div class="mdc-notched-outline">
+            <svg>
+              <path class="mdc-notched-outline__path"/>
+            </svg>
+          </div>
+          <div class="mdc-notched-outline__idle"></div>
+        </div>
+      </div>
+      <div class="mdc-rows mb20">
+        <h3 class="mdc-typography--subtitle1 default-font mb5 mt0 mr15">&nbsp;</h3>
+        <a class="mdc-button mdc-button--raised mdc-ripple-upgraded mdc-ripple-upgraded--foreground-activation h56" data-mdc-auto-init="MDCRipple">
+          Search
+        </a>
+      </div>
     </div>
   </div>
   <div class="mdc-rows-form mdc-rows mb30">
-    <div class="mdc-rows-box">
-      <div>
-        <h3 class="mdc-typography--subtitle1 default-font mb0">Latitude</h3>
-        <div class="text-field-row">
-          <%= f.number_field :lat, placeholder: "10.3343909", class: "mdc-text-field__input", step: :any %>
-        </div>
-      </div>
+    <div class="mdc-rows-box flex flex-wrap">
+      Map in here
     </div>
-    <div class="mdc-rows-box">
-      <div>
-        <h3 class="mdc-typography--subtitle1 default-font mb0">Longitude</h3>
-        <div class="text-field-row">
-          <%= f.number_field :lng, placeholder: "10.3343909", class: "mdc-text-field__input", step: :any %>
+  </div>
+  <div class="mdc-rows">
+    <div class="default-box pad15">
+
+      <div class="mdc-tab-bar" role="tablist" data-mdc-auto-init="MDCTabBar">
+        <div class="mdc-tab-scroller">
+          <div class="mdc-tab-scroller__scroll-area mdc-tab-scroller__scroll-area--scroll">
+            <div class="mdc-tab-scroller__scroll-content">
+              <a class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="0">
+                <span class="mdc-tab__content">
+                  <span class="mdc-tab__icon material-icons" aria-hidden="true">view_list</span>
+                  <span class="mdc-tab__text-label">Information</span>
+                </span>
+                <span class="mdc-tab-indicator mdc-tab-indicator--active">
+                  <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline" style=""></span>
+                </span>
+                <span class="mdc-tab__ripple mdc-ripple-upgraded mdc-ripple-upgraded--foreground-activation"></span>
+              </a>
+              <a class="mdc-tab" role="tab" aria-selected="false" tabindex="-1">
+                <span class="mdc-tab__content">
+                  <span class="mdc-tab__icon material-icons" aria-hidden="true">photo</span>
+                  <span class="mdc-tab__text-label">Photo</span>
+                </span>
+                <span class="mdc-tab-indicator">
+                  <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                </span>
+                <span class="mdc-tab__ripple mdc-ripple-upgraded"></span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
+
+      <div class="content content--active pt30">
+        <div class="mdc-rows-form mdc-rows">
+          <div class="mdc-rows-box flex flex-wrap">
+            <div class="mdc-rows mr20 mb20">
+              <h3 class="mdc-typography--subtitle1 default-font mb5 mt0 mr15">Name</h3>
+              <div class="mdc-text-field text-field mdc-text-field--outlined w200 white-bg" data-mdc-auto-init="MDCTextField">
+                <%= f.text_field :name, class: "mdc-text-field__input" %>
+                <label class="mdc-floating-label">Ex: Nha Trang</label>
+                <div class="mdc-notched-outline">
+                  <svg>
+                    <path class="mdc-notched-outline__path"/>
+                  </svg>
+                </div>
+                <div class="mdc-notched-outline__idle"></div>
+              </div>
+            </div>
+            <div class="mdc-rows mr20 mb20">
+              <h3 class="mdc-typography--subtitle1 default-font mb5 mt0 mr15">Format Name (Alias)</h3>
+              <div class="mdc-text-field text-field mdc-text-field--outlined w200 white-bg">
+                <%= f.text_field :format_name, readOnly: true, class: "mdc-text-field__input" %>
+                <div class="mdc-notched-outline">
+                  <svg>
+                    <path class="mdc-notched-outline__path"/>
+                  </svg>
+                </div>
+                <div class="mdc-notched-outline__idle"></div>
+              </div>
+            </div>
+            <div class="mdc-rows mr20 mb20">
+              <h3 class="mdc-typography--subtitle1 default-font mb5 mt0 mr15">Latitude</h3>
+              <div class="mdc-text-field text-field mdc-text-field--outlined w200 white-bg" data-mdc-auto-init="MDCTextField">
+                <%= f.number_field :lat, class: "mdc-text-field__input", step: :any %>
+                <label class="mdc-floating-label">Ex: 10.3343909</label>
+                <div class="mdc-notched-outline">
+                  <svg>
+                    <path class="mdc-notched-outline__path"/>
+                  </svg>
+                </div>
+                <div class="mdc-notched-outline__idle"></div>
+              </div>
+            </div>
+            <div class="mdc-rows mr20 mb20">
+              <h3 class="mdc-typography--subtitle1 default-font mb5 mt0 mr15">Longitude</h3>
+              <div class="mdc-text-field text-field mdc-text-field--outlined w200 white-bg" data-mdc-auto-init="MDCTextField">
+                <%= f.number_field :lng, class: "mdc-text-field__input", step: :any %>
+                <label class="mdc-floating-label">Ex: 10.3343909</label>
+                <div class="mdc-notched-outline">
+                  <svg>
+                    <path class="mdc-notched-outline__path"/>
+                  </svg>
+                </div>
+                <div class="mdc-notched-outline__idle"></div>
+              </div>
+            </div>
+            <div class="mdc-rows mr20 mb20">
+              <h3 class="mdc-typography--subtitle1 default-font mb5 mt0 mr15">Formatted Address</h3>
+              <div class="mdc-text-field text-field mdc-text-field--outlined w200 white-bg" data-mdc-auto-init="MDCTextField">
+                <%= f.text_field :formatted_address, class: "mdc-text-field__input" %>
+                <label class="mdc-floating-label">Ex: 150Bis CMT8</label>
+                <div class="mdc-notched-outline">
+                  <svg>
+                    <path class="mdc-notched-outline__path"/>
+                  </svg>
+                </div>
+                <div class="mdc-notched-outline__idle"></div>
+              </div>
+            </div>
+            <div class="mdc-rows mr20 mb20">
+              <h3 class="mdc-typography--subtitle1 default-font mb5 mt0 mr15">Formatted Phone</h3>
+              <div class="mdc-text-field text-field mdc-text-field--outlined w200 white-bg" data-mdc-auto-init="MDCTextField">
+                <%= f.number_field :formatted_phone_number, class: "mdc-text-field__input", step: :any %>
+                <label class="mdc-floating-label">Ex: 0122.2665.112</label>
+                <div class="mdc-notched-outline">
+                  <svg>
+                    <path class="mdc-notched-outline__path"/>
+                  </svg>
+                </div>
+                <div class="mdc-notched-outline__idle"></div>
+              </div>
+            </div>
+            <div class="mdc-rows mr20 mb20">
+              <h3 class="mdc-typography--subtitle1 default-font mb5 mt0 mr15">Icon</h3>
+              <div class="mdc-text-field text-field mdc-text-field--outlined w200 white-bg" data-mdc-auto-init="MDCTextField">
+                <%= f.text_field :icon, class: "mdc-text-field__input", step: :any %>
+                <label class="mdc-floating-label">Ex: example.com/icon</label>
+                <div class="mdc-notched-outline">
+                  <svg>
+                    <path class="mdc-notched-outline__path"/>
+                  </svg>
+                </div>
+                <div class="mdc-notched-outline__idle"></div>
+              </div>
+            </div>
+            <div class="mdc-rows mr20 mb20">
+              <h3 class="mdc-typography--subtitle1 default-font mb5 mt0 mr15">Url</h3>
+              <div class="mdc-text-field text-field mdc-text-field--outlined w200 white-bg" data-mdc-auto-init="MDCTextField">
+                <%= f.number_field :url, class: "mdc-text-field__input", step: :any %>
+                <label class="mdc-floating-label">Ex: example.com</label>
+                <div class="mdc-notched-outline">
+                  <svg>
+                    <path class="mdc-notched-outline__path"/>
+                  </svg>
+                </div>
+                <div class="mdc-notched-outline__idle"></div>
+              </div>
+            </div>
+            <div class="mdc-rows mr20 mb20">
+              <h3 class="mdc-typography--subtitle1 default-font mb5 mt0 mr15">Website</h3>
+              <div class="mdc-text-field text-field mdc-text-field--outlined w200 white-bg" data-mdc-auto-init="MDCTextField">
+                <%= f.text_field :website, class: "mdc-text-field__input" %>
+                <label class="mdc-floating-label">Ex: example.com</label>
+                <div class="mdc-notched-outline">
+                  <svg>
+                    <path class="mdc-notched-outline__path"/>
+                  </svg>
+                </div>
+                <div class="mdc-notched-outline__idle"></div>
+              </div>
+            </div>
+            <div class="mdc-rows mr20 mb20">
+              <h3 class="mdc-typography--subtitle1 default-font mb5 mt0 mr15">Place ID</h3>
+              <div class="mdc-text-field text-field mdc-text-field--outlined w200 white-bg" data-mdc-auto-init="MDCTextField">
+                <%= f.text_field :place_temp_google, class: "mdc-text-field__input" %>
+                <label class="mdc-floating-label">Ex: 8fieme-f</label>
+                <div class="mdc-notched-outline">
+                  <svg>
+                    <path class="mdc-notched-outline__path"/>
+                  </svg>
+                </div>
+                <div class="mdc-notched-outline__idle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mdc-rows-form mdc-rows">
+          <div class="mdc-rows-box flex flex-wrap">
+            <div class="mdc-rows mr20">
+              <h3 class="mdc-typography--subtitle1 default-font mb5 mt0 mr15">Description</h3>
+              <div class="mdc-text-field mdc-text-field--textarea w420 white-bg" data-mdc-auto-init="MDCTextField">
+                <%= f.text_area :description, class: "mdc-text-field__input resize__none" %>
+              </div>
+            </div>
+            <div class="mdc-rows mr20">
+              <h3 class="mdc-typography--subtitle1 default-font mb5 mt0 mr15">Opening Hours</h3>
+              <div class="mdc-text-field mdc-text-field--textarea w420 white-bg" data-mdc-auto-init="MDCTextField">
+                <%= f.text_area :opening_hours, class: "mdc-text-field__input resize__none" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content pt30">
+        <div class="mdc-rows-form mdc-rows">
+          <div class="mdc-rows-box flex flex-wrap">
+            <ul class="mdc-image-list mdc-image-list--masonry my-masonry-image-list">
+
+            </ul>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 <% end %>
-
-/ = react_component('UploadImage', inputName: 'area[driver_image_attributes][image]', image: "#{f.object.driver_image.try :image, :thumb}")
